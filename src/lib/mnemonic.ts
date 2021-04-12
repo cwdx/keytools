@@ -37,7 +37,6 @@ export const mnemonicToKeys = (mnemonic: string, path = "m/44'/60'/0'/0/0") => {
 };
 
 export const privateKeyToKeys = (privateKey: string) => {
-  console.log(privateKey, Buffer.from(privateKey, "hex").length);
   const instance = eth.fromPrivateKey(Buffer.from(privateKey.slice(), "hex"));
   const wallet: Wallet = {
     privateKey: instance.getPrivateKeyString().slice(2),
@@ -51,5 +50,3 @@ export const privateKeyToKeys = (privateKey: string) => {
 const wal = mnemonicToKeys(
   "pelican excess cotton jacket know north lend virtual awful hair thing very"
 );
-
-console.log(privateKeyToKeys(wal.privateKey));

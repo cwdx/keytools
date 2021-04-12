@@ -7,13 +7,15 @@
     <button @click.prevent="generate">Generate</button>
 
     <pre>{{ wallet }}</pre>
+    <img :src="qr" v-if="qr" width="300" />
   </div>
 </template>
 
 <script lang="ts">
 import { mnemonicToKeys, privateKeyToKeys } from "@/lib/mnemonic";
+import { getQr } from "@/lib/qr";
 import { generateMnemonic } from "bip39";
-import { computed, defineComponent, reactive, ref } from "vue";
+import { computed, defineComponent, ref, watch } from "vue";
 
 export default defineComponent({
   name: "Home",
@@ -32,6 +34,14 @@ export default defineComponent({
       }
     });
 
+    const qr = ref("");
+
+    watch(wallet, () => {
+      getQr(wallet.value.privateKey)
+        .then((val) => (qr.value = val))
+        .catch(() => (qr.value = ""));
+    });
+
     const generate = () => {
       privateKey.value = mnemonicToKeys(generateMnemonic()).privateKey;
     };
@@ -42,6 +52,7 @@ export default defineComponent({
       generate,
       wallet,
       privateKey,
+      qr,
     };
   },
 });
