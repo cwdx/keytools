@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "bip32": "^2.0.6",
+    "bip39": "^3.0.3",
+    "ethereumjs-wallet": "^1.0.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },

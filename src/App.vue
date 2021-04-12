@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Mnemonic</router-link> |
+    <router-link to="/privatekey">Private Key</router-link>
   </div>
   <router-view />
 </template>
@@ -11,8 +11,23 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+}
+
+input,
+button {
+  width: 100%;
+  margin: 0.5rem 0;
+  font-size: inherit;
+}
+
+pre {
+  font-size: inherit;
+  overflow: auto;
+  max-width: 100%;
 }
 
 #nav {
